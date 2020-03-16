@@ -1,37 +1,51 @@
-//This is an example code for Bottom Navigation//
 import React from 'react';
-//import react in our code.
-import {Text, View, TouchableOpacity, StyleSheet} from 'react-native';
+import {Container, Content, Item, Input} from 'native-base';
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  StyleSheet,
+  Dimensions,
+  Image,
+} from 'react-native';
 import {CustomHeader} from '../../components/header/CustomHeader';
+import {SafeAreaView} from 'react-native-safe-area-context';
+var width = Dimensions.get('window').width;
 export default class Home extends React.Component {
   render() {
     return (
-      <View style={{flex: 1}}>
-        <CustomHeader title="facebook" />
-        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-          <Text style={{marginTop: 50, fontSize: 25}}>Home!</Text>
-          <View
-            style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-            <TouchableOpacity
-              style={styles.button}
-              onPress={() => this.props.navigation.navigate('Settings')}>
-              <Text>Go to settng Tab</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.button}
-              onPress={() => this.props.navigation.navigate('Details')}>
-              <Text>Open Details Screen</Text>
-            </TouchableOpacity>
+      <SafeAreaView>
+        <View>
+          <CustomHeader title="facebook" />
+          <View>
+            <View>
+              <Item style={{width: width, marginTop: 10}}>
+                <Image
+                  style={{
+                    width: 40,
+                    height: 40,
+                    borderRadius: 20,
+                    marginLeft: 10,
+                    marginRight: 5,
+                  }}
+                  source={require('../../img/profile.png')}
+                />
+                <Input
+                  // placeholderStyle={{fontWeight: '0'}}
+                  placeholder="What's on your mind?"
+                  placeholderTextColor="#000"
+                />
+              </Item>
+            </View>
           </View>
         </View>
-      </View>
+      </SafeAreaView>
     );
   }
 }
 const styles = StyleSheet.create({
   button: {
     alignItems: 'center',
-    backgroundColor: '#DDDDDD',
     padding: 10,
     width: 300,
     marginTop: 16,
