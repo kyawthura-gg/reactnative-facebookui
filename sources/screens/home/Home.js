@@ -10,6 +10,9 @@ import {
 } from 'react-native';
 import {CustomHeader} from '../../components/header/CustomHeader';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import IonIcons from 'react-native-vector-icons/Ionicons';
+import OcticonsIcon from 'react-native-vector-icons/Entypo';
+
 var width = Dimensions.get('window').width;
 export default class Home extends React.Component {
   render() {
@@ -19,7 +22,7 @@ export default class Home extends React.Component {
           <CustomHeader title="facebook" />
           <View>
             <View>
-              <Item style={{width: width, marginTop: 10}}>
+              <Item style={{width: width, marginTop: 10, height: 65}}>
                 <Image
                   style={{
                     width: 40,
@@ -37,16 +40,47 @@ export default class Home extends React.Component {
                 />
               </Item>
             </View>
-            <View>
+            <View style={{marginTop: 10, marginBottom: 10}}>
+              <View
+                style={{
+                  borderRightWidth: 5,
+                  borderRightColor: 'black',
+                }}></View>
               <View style={styles.container}>
                 <View style={styles.item}>
-                  <Text>Test</Text>
+                  <View style={styles.container}>
+                    <View style={styles.subItemFirst}>
+                      <IonIcons name="ios-videocam" size={24} color="#dd4050" />
+                    </View>
+                    <View style={styles.subItemSecond}>
+                      <Text>Live</Text>
+                    </View>
+                  </View>
+                </View>
+
+                <View style={styles.item}>
+                  <View style={styles.container}>
+                    <View style={styles.subItemFirst}>
+                      <IonIcons name="ios-images" size={24} color="#93bb5c" />
+                    </View>
+                    <View style={styles.subItemSecond}>
+                      <Text>Photo</Text>
+                    </View>
+                  </View>
                 </View>
                 <View style={styles.item}>
-                  <Text>Test</Text>
-                </View>
-                <View style={styles.item}>
-                  <Text>Test</Text>
+                  <View style={styles.container}>
+                    <View style={styles.subItemFirst}>
+                      <OcticonsIcon
+                        name="location-pin"
+                        size={24}
+                        color="#e13770"
+                      />
+                    </View>
+                    <View style={styles.subItemSecond}>
+                      <Text>Check In</Text>
+                    </View>
+                  </View>
                 </View>
               </View>
             </View>
@@ -57,6 +91,9 @@ export default class Home extends React.Component {
   }
 }
 const styles = StyleSheet.create({
+  mainContainer: {
+    backgroundColor: '#c9cbd0',
+  },
   button: {
     alignItems: 'center',
     padding: 10,
@@ -66,14 +103,20 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    alignItems: 'flex-start', // if you want to fill rows left to right
+    alignItems: 'center', // if you want to fill rows left to right
   },
-  subItem: {
+  subItemFirst: {
     width: '50%',
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+  },
+  subItemSecond: {
+    marginLeft: 4,
+    width: '46%',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
   },
   item: {
-    justifyContent: 'center',
-    alignItems: 'center',
     width: '33.3%', // is 50% of container width
   },
 });
