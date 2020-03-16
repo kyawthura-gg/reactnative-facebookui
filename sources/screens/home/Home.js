@@ -37,6 +37,19 @@ export default class Home extends React.Component {
                 />
               </Item>
             </View>
+            <View>
+              <View style={styles.container}>
+                <View style={styles.item}>
+                  <Text>Test</Text>
+                </View>
+                <View style={styles.item}>
+                  <Text>Test</Text>
+                </View>
+                <View style={styles.item}>
+                  <Text>Test</Text>
+                </View>
+              </View>
+            </View>
           </View>
         </View>
       </SafeAreaView>
@@ -49,5 +62,18 @@ const styles = StyleSheet.create({
     padding: 10,
     width: 300,
     marginTop: 16,
+  },
+  container: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'flex-start', // if you want to fill rows left to right
+  },
+  subItem: {
+    width: '50%',
+  },
+  item: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '33.3%', // is 50% of container width
   },
 });
