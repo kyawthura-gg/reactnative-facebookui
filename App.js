@@ -1,114 +1,119 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
+import * as React from 'react';
+import {Button, Text, View} from 'react-native';
+import Home from './sources/screens/home/Home';
+import HomeDeatils from './sources/screens/home/HomeDetails';
+import Menu from './sources/screens/menu/Menu';
+import Gaming from './sources/screens/gaming/Gaming';
+import Market from './sources/screens/market/Market';
+import Notification from './sources/screens/notification/Notification';
+import Video from './sources/screens/video/Video';
+import Profile from './sources/screens/menu/Profile';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import EntypoIcon from 'react-native-vector-icons/Entypo';
+import IonIcons from 'react-native-vector-icons/Ionicons';
+import FeatherIcon from 'react-native-vector-icons/Feather';
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 
-import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+const HomeStack = createStackNavigator();
+const VideoStack = createStackNavigator();
+const MarketStack = createStackNavigator();
+const GamingStack = createStackNavigator();
+const NotiStack = createStackNavigator();
+const MenuStack = createStackNavigator();
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-const App: () => React$Node = () => {
+function HomeStackScreen() {
   return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
+    <HomeStack.Navigator headerMode="none">
+      <HomeStack.Screen name="Home" component={Home} />
+      <HomeStack.Screen name="Details" component={HomeDeatils} />
+    </HomeStack.Navigator>
   );
-};
+}
+function VideoStackScreen() {
+  return (
+    <VideoStack.Navigator headerMode="none">
+      <VideoStack.Screen name="Video" component={Video} />
+    </VideoStack.Navigator>
+  );
+}
 
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
+function MarketStackScreen() {
+  return (
+    <MarketStack.Navigator headerMode="none">
+      <MarketStack.Screen name="Market" component={Market} />
+    </MarketStack.Navigator>
+  );
+}
+function GamingStackScreen() {
+  return (
+    <GamingStack.Navigator headerMode="none">
+      <GamingStack.Screen name="Gaming" component={Gaming} />
+    </GamingStack.Navigator>
+  );
+}
+function NotiStackScreen() {
+  return (
+    <NotiStack.Navigator headerMode="none">
+      <NotiStack.Screen name="Nofification" component={Notification} />
+    </NotiStack.Navigator>
+  );
+}
 
-export default App;
+function MenuStackScreen() {
+  return (
+    <MenuStack.Navigator headerMode="none">
+      <MenuStack.Screen name="Menu" component={Menu} />
+      <MenuStack.Screen name="Details" component={Profile} />
+    </MenuStack.Navigator>
+  );
+}
+
+const Tab = createBottomTabNavigator();
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Tab.Navigator
+        screenOptions={({route}) => ({
+          tabBarIcon: ({focused, color, size}) => {
+            let iconName;
+            if (route.name === 'Home') {
+              iconName = focused ? 'home' : 'home';
+              return <EntypoIcon name={iconName} size={30} color={color} />;
+            } else if (route.name === 'Video') {
+              iconName = focused ? 'ondemand-video' : 'ondemand-video';
+              return <MaterialIcon name={iconName} size={30} color={color} />;
+            } else if (route.name === 'Market') {
+              iconName = focused ? 'shop' : 'shop';
+              return <EntypoIcon name={iconName} size={30} color={color} />;
+            } else if (route.name === 'Gaming') {
+              iconName = focused ? 'game-controller' : 'game-controller';
+              return <EntypoIcon name={iconName} size={30} color={color} />;
+            } else if (route.name === 'Notification') {
+              iconName = focused
+                ? 'md-notifications'
+                : 'ios-notifications-outline';
+              return <IonIcons name={iconName} size={30} color={color} />;
+            } else if (route.name === 'Menu') {
+              iconName = focused ? 'menu' : 'menu';
+              return <FeatherIcon name={iconName} size={30} color={color} />;
+            }
+          },
+        })}
+        tabBarOptions={{
+          activeTintColor: '#3b5998',
+          inactiveTintColor: 'gray',
+          showLabel: false,
+        }}>
+        <Tab.Screen name="Home" component={HomeStackScreen} />
+        <Tab.Screen name="Video" component={VideoStackScreen} />
+        <Tab.Screen name="Market" component={MarketStackScreen} />
+        <Tab.Screen name="Gaming" component={GamingStackScreen} />
+        <Tab.Screen name="Notification" component={NotiStackScreen} />
+        <Tab.Screen name="Menu" component={MenuStackScreen} />
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
+}
