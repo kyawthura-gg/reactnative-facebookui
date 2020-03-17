@@ -1,9 +1,11 @@
 import React from 'react';
-import {Container, Content, Item, Input} from 'native-base';
+import {
+  Item,
+  Input,
+} from 'native-base';
 import {
   Text,
   View,
-  TouchableOpacity,
   StyleSheet,
   Dimensions,
   Image,
@@ -12,14 +14,18 @@ import {CustomHeader} from '../../components/header/CustomHeader';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
+import EvilIconsIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import AntDesignIcon from 'react-native-vector-icons/AntDesign';
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import {ScrollView} from 'react-native-gesture-handler';
 
 var width = Dimensions.get('window').width;
 export default class Home extends React.Component {
   render() {
     return (
-      <SafeAreaView style={styles.mainContainer}>
-        <View>
+      // <SafeAreaView style={styles.mainContainer}>
+      <View>
+        <ScrollView horizontal={false} showsVerticalScrollIndicator={false}>
           <CustomHeader title="facebook" />
           <View>
             <View>
@@ -149,9 +155,61 @@ export default class Home extends React.Component {
               </ScrollView>
             </View>
             <View style={styles.gap}></View>
+            <View>
+              <View>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    marginTop: 10,
+                    marginBottom: 10,
+                  }}>
+                  <View style={{width: '20%'}}>
+                    <Image
+                      source={require('../../img/profile.png')}
+                      style={styles.profileImage}
+                    />
+                  </View>
+                  <View style={{width: '40%'}}>
+                    <Text
+                      style={{
+                        fontSize: 16,
+                        fontWeight: '500',
+                        marginBottom: 5,
+                      }}>
+                      Kanhaiya Aryal
+                    </Text>
+                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                      <Text style={{fontSize: 12}}>2 hrs . </Text>
+                      <FontAwesomeIcon name="globe" color="#66686c" size={16} />
+                    </View>
+                  </View>
+                  <View
+                    style={{
+                      width: '40%',
+                      alignItems: 'flex-end',
+                      paddingRight: 20,
+                    }}>
+                    <EntypoIcon
+                      name="dots-three-horizontal"
+                      size={20}
+                      color="gray"
+                    />
+                  </View>
+                </View>
+                <View>
+                  <Image
+                    source={require('../../img/profile-6.jpg')}
+                    style={{width: null, height: 380}}
+                  />
+                </View>
+              </View>
+            </View>
+            <View style={styles.gap}></View>
           </View>
-        </View>
-      </SafeAreaView>
+        </ScrollView>
+      </View>
+      // {/* </SafeAreaView> */}
     );
   }
 }
