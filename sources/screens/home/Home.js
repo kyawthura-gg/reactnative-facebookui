@@ -12,12 +12,13 @@ import {CustomHeader} from '../../components/header/CustomHeader';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import OcticonsIcon from 'react-native-vector-icons/Entypo';
+import {ScrollView} from 'react-native-gesture-handler';
 
 var width = Dimensions.get('window').width;
 export default class Home extends React.Component {
   render() {
     return (
-      <SafeAreaView>
+      <SafeAreaView style={styles.mainContainer}>
         <View>
           <CustomHeader title="facebook" />
           <View>
@@ -40,12 +41,7 @@ export default class Home extends React.Component {
                 />
               </Item>
             </View>
-            <View style={{marginTop: 10, marginBottom: 10}}>
-              <View
-                style={{
-                  borderRightWidth: 5,
-                  borderRightColor: 'black',
-                }}></View>
+            <View style={{marginTop: 10, paddingBottom: 10}}>
               <View style={styles.container}>
                 <View style={styles.item}>
                   <View style={styles.container}>
@@ -84,6 +80,7 @@ export default class Home extends React.Component {
                 </View>
               </View>
             </View>
+            <View style={{backgroundColor: '#c9cbd0', height: 10}}></View>
           </View>
         </View>
       </SafeAreaView>
@@ -92,17 +89,11 @@ export default class Home extends React.Component {
 }
 const styles = StyleSheet.create({
   mainContainer: {
-    backgroundColor: '#c9cbd0',
-  },
-  button: {
-    alignItems: 'center',
-    padding: 10,
-    width: 300,
-    marginTop: 16,
+    backgroundColor: 'white',
   },
   container: {
     flexDirection: 'row',
-    flexWrap: 'wrap',
+    // flexWrap: 'wrap',
     alignItems: 'center', // if you want to fill rows left to right
   },
   subItemFirst: {
@@ -113,7 +104,7 @@ const styles = StyleSheet.create({
   subItemSecond: {
     marginLeft: 4,
     width: '46%',
-    justifyContent: 'flex-start',
+    // justifyContent: 'flex-start',
     alignItems: 'flex-start',
   },
   item: {
