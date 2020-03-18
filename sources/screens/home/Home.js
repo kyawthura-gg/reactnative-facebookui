@@ -1,20 +1,11 @@
 import React from 'react';
-import {
-  Item,
-  Input,
-} from 'native-base';
-import {
-  Text,
-  View,
-  StyleSheet,
-  Dimensions,
-  Image,
-} from 'react-native';
+import {Item, Input} from 'native-base';
+import {Text, View, StyleSheet, Dimensions, Image} from 'react-native';
 import {CustomHeader} from '../../components/header/CustomHeader';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
-import EvilIconsIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import {ScrollView} from 'react-native-gesture-handler';
@@ -164,7 +155,7 @@ export default class Home extends React.Component {
                     marginTop: 10,
                     marginBottom: 10,
                   }}>
-                  <View style={{width: '20%'}}>
+                  <View style={{width: '14%'}}>
                     <Image
                       source={require('../../img/profile.png')}
                       style={styles.profileImage}
@@ -175,7 +166,7 @@ export default class Home extends React.Component {
                       style={{
                         fontSize: 16,
                         fontWeight: '500',
-                        marginBottom: 5,
+                        marginBottom: 3,
                       }}>
                       Kanhaiya Aryal
                     </Text>
@@ -188,7 +179,7 @@ export default class Home extends React.Component {
                     style={{
                       width: '40%',
                       alignItems: 'flex-end',
-                      paddingRight: 20,
+                      paddingRight: 10,
                     }}>
                     <EntypoIcon
                       name="dots-three-horizontal"
@@ -202,6 +193,61 @@ export default class Home extends React.Component {
                     source={require('../../img/profile-6.jpg')}
                     style={{width: null, height: 380}}
                   />
+                </View>
+                <View
+                  style={{
+                    margin: 15,
+                    borderBottomColor: 'gray',
+                    borderBottomWidth: 1,
+                  }}
+                />
+                <View style={{paddingBottom: 10}}>
+                  <View style={styles.container}>
+                    <View style={styles.item}>
+                      <View style={styles.container}>
+                        <View style={styles.subItemFirst}>
+                          <AntDesignIcon
+                            name="like2"
+                            size={24}
+                            color="#585a5e"
+                          />
+                        </View>
+                        <View style={styles.subItemSecond}>
+                          <Text>Like</Text>
+                        </View>
+                      </View>
+                    </View>
+
+                    <View style={styles.item}>
+                      <View style={styles.container}>
+                        <View style={styles.subItemFirst}>
+                          <MaterialIcon
+                            name="comment-outline"
+                            size={24}
+                            color="#585a5e"
+                            style={{paddingTop: 5}}
+                          />
+                        </View>
+                        <View style={styles.subItemSecond}>
+                          <Text>Comment</Text>
+                        </View>
+                      </View>
+                    </View>
+                    <View style={styles.item}>
+                      <View style={styles.container}>
+                        <View style={styles.subItemFirst}>
+                          <FontAwesomeIcon
+                            name="share"
+                            size={24}
+                            color="#585a5e"
+                          />
+                        </View>
+                        <View style={styles.subItemSecond}>
+                          <Text>Share</Text>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
                 </View>
               </View>
             </View>
@@ -260,7 +306,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   item: {
-    width: '33.3%', // is 50% of container width
+    width: '33.3%',
   },
   myDayProfilePosition: {
     position: 'absolute',
